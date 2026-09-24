@@ -27,10 +27,9 @@ Persian and English).
 ## Install
 
 ```bash
-pipx install git+https://github.com/komeilsedaghat-dev/rtl-tty
+pipx install rtl-tty
 ```
 
-(`pipx install rtl-tty` will work once the package is published on PyPI.)
 Requires Python 3.9+ on Linux. No dependencies. Optional alias:
 
 ```bash
