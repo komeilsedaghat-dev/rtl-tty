@@ -11,17 +11,27 @@ right-to-left with English words staying where they belong.
 rtl-tty claude
 ```
 
-<!-- TODO: before/after GIF -->
+### Before / after
+
+Real screenshots of Claude Code in GNOME Terminal (the two replies are different texts; both are mixed
+Persian and English).
+
+**Without rtl-tty:** rows are laid out left-to-right, so words and English terms end up in the wrong order.
+
+![Claude Code without rtl-tty](https://raw.githubusercontent.com/komeilsedaghat-dev/rtl-tty/main/docs/before.png)
+
+**With `rtl-tty claude`:** rows are right-to-left, English terms stay where they belong.
+
+![Claude Code with rtl-tty](https://raw.githubusercontent.com/komeilsedaghat-dev/rtl-tty/main/docs/after.png)
 
 ## Install
 
 ```bash
-pipx install rtl-tty        # once published to PyPI
-# or from a checkout:
-pipx install .
+pipx install git+https://github.com/komeilsedaghat-dev/rtl-tty
 ```
 
-Requires Python 3.8+ on Linux. No dependencies. Optional alias:
+(`pipx install rtl-tty` will work once the package is published on PyPI.)
+Requires Python 3.9+ on Linux. No dependencies. Optional alias:
 
 ```bash
 alias claude='rtl-tty claude'
@@ -37,11 +47,16 @@ alias claude='rtl-tty claude'
 | Kitty, Alacritty, WezTerm, iTerm2, Windows Terminal, VS Code terminal | not supported (no bidi layout at all in most of them) |
 | Gemini CLI, Codex CLI, aider, opencode | untested |
 
-Reports welcome: run `experiments/scp_demo.sh` in your terminal and open an issue with the result.
+Reports welcome: run `bash experiments/scp_demo.sh` in your terminal and open a
+[compatibility report](https://github.com/komeilsedaghat-dev/rtl-tty/issues/new?template=terminal-report.md).
 
 ## How it works
 
-Findings on GNOME Terminal / VTE 0.76, all reproducible with `experiments/scp_demo.sh`:
+Findings on GNOME Terminal / VTE 0.76, all reproducible with `experiments/scp_demo.sh`
+(right-aligned rows in the screenshot below are the ones where SCP took effect):
+
+![scp_demo.sh output](https://raw.githubusercontent.com/komeilsedaghat-dev/rtl-tty/main/docs/scp-demo.png)
+
 
 1. VTE lays rows out **left-to-right by default** and **discards** Unicode bidi control characters
    (RLI, PDI, RLM, ...), so the usual "wrap it in isolates" trick does nothing (demo case 5).

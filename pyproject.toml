@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,10 +7,16 @@ name = "rtl-tty"
 version = "0.2.0"
 description = "Fix Persian/Arabic/Hebrew (RTL) text in the terminal for AI CLIs like Claude Code"
 readme = "README.md"
-license = {text = "MIT"}
-requires-python = ">=3.8"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "komeilsedaghat-dev"}]
+requires-python = ">=3.9"
 keywords = ["rtl", "bidi", "persian", "farsi", "arabic", "hebrew", "terminal", "pty", "vte"]
-classifiers = ["Environment :: Console", "Operating System :: POSIX :: Linux", "License :: OSI Approved :: MIT License"]
+classifiers = ["Environment :: Console", "Operating System :: POSIX :: Linux", "Programming Language :: Python :: 3"]
+
+[project.urls]
+Homepage = "https://github.com/komeilsedaghat-dev/rtl-tty"
+Issues = "https://github.com/komeilsedaghat-dev/rtl-tty/issues"
 
 [project.scripts]
 rtl-tty = "rtl_tty.cli:main"
